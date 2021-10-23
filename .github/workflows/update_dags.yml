@@ -1,0 +1,19 @@
+  name: my_first_action
+  on:
+    pull_request:
+    push:
+      branches:
+        - master
+  jobs:
+    build:
+      name: my_update_job
+      runs-on: ubuntu-latest
+      steps:
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: whoami
