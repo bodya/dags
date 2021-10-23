@@ -16,4 +16,6 @@
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.AIR }}
-          script: whoami
+          script:
+            cd ~/airflow/dags
+            git pull https://github.com/bodya/dags.git
