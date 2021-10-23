@@ -3,7 +3,7 @@
     pull_request:
     push:
       branches:
-        - master
+        - main
   jobs:
     build:
       name: my_update_job
