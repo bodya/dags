@@ -10,13 +10,12 @@
       runs-on: ubuntu-latest
       steps:
       - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@master
+      - uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.AIR }}
-          run:
-            cd ~/airflow/dags
-            git pull https://github.com/bodya/dags.git
+      - run: cd ~/airflow/dags
+      - run: git pull https://github.com/bodya/dags.git
 
