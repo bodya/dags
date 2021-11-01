@@ -5,7 +5,7 @@ from datetime import datetime
 default_args = {
     'owner': 'bodya',
     'depends_on_past': False,
-    'start_date': datetime(2021, 11, 02),
+    'start_date': datetime(2021, 11, 2),
     'retries': 2,
     'catchup': False
 }

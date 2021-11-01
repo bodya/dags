@@ -9,7 +9,6 @@ connection = dict(database='db_moex',
                   user='default',
                   password='bodya')
 
-
 path = 'http://iss.moex.com/iss/engines/futures/markets/options/securities.json'
 req = requests.get(path)
 json_data = json.loads(req.text)

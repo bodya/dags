@@ -29,7 +29,7 @@ t2 = PythonOperator(task_id='my_first_task_sum_id', python_callable=sum_init,
 
 #t3 = BashOperator(task_id='my_first_task_bash_id', bash_command='echo "hello world form BASH!!!"', dag=dag)
 
-t3 = BashOperator(task_id='my_first_task_bash_id', bash_command='python3 ~/airflow/dags/moex_securities_db.py', dag=dag)
+t3 = BashOperator(task_id='my_first_task_bash_id', bash_command='python3 ~/airflow/dags/work_with_db.py', dag=dag)
 
 
 
