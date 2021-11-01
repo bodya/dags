@@ -12,7 +12,8 @@ default_args = {
 
 dag = DAG('moex_securities_dag_name',
     default_args=default_args,
-    schedule_interval='55 6 * * 1-5')
+    schedule_interval='55 2 * * 1-5')
+    #schedule_interval='55 6 * * 1-5')
 
 t1 = BashOperator(task_id='moex_securities_to_db_id', bash_command='python3 ~/airflow/dags/moex_securities_db.py', dag=dag)
 #t1 = BashOperator(task_id='moex_securities_to_db_id', bash_command='echo "hello world form BASH!!!"', dag=dag)
