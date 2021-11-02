@@ -1,7 +1,7 @@
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.utils.dates import days_ago
-from datetime import datetime
+#from datetime import datetime
 
 default_args = {
     'owner': 'bodya',
@@ -10,6 +10,8 @@ default_args = {
     'start_date': days_ago(0),
     'retries': 0,
     'catchup': False
+    # "retry_delay": datetime.timedelta(minutes=5),  # дельта запуска при повторе 5 минут
+    #"task_concurency": 1  # одновременно только 1 таск
 }
 
 dag = DAG('moex_marketdata_dag_name',
