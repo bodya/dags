@@ -1,11 +1,13 @@
 from airflow import DAG
 from airflow.operators.bash import BashOperator
-from datetime import datetime
+from airflow.utils.dates import days_ago
+#from datetime import datetime
 
 default_args = {
     'owner': 'bodya',
     'depends_on_past': False,
-    'start_date': datetime(2021, 11, 1),
+    #'start_date': datetime(2021, 11, 1),
+    'start_date': days_ago(0),
     'retries': 2,
     'catchup': False
 }
