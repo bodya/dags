@@ -20,7 +20,7 @@ def init_dag(dag, task_id):
     with dag:
         t1 = BashOperator(
             task_id=f"{task_id}",
-            bash_command=f'python3 /Users/miracl6/airflow-mlflow-tutorial/{task_id}.py')
+            bash_command=f'python3 ~/airflow/dags/{task_id}.py')
     return dag
 
 for task_id, params in piplines.items():
