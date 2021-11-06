@@ -15,6 +15,6 @@ json_data = json.loads(req.text)
 marketdata_df = pd.DataFrame(json_data['marketdata']['data'],columns=json_data['marketdata']['columns'])
 marketdata_df.columns = marketdata_df.columns.str.lower()
 marketdata_df.insert(0, 'datestamp', str(datetime.today().strftime('%Y-%m-%d %H:%M:%S')), True)
-
+marketdata_df.query('numtrades != 0', inplace=True)
 #записываем данные из pandas в clickhouse
 ph.to_clickhouse(marketdata_df, 'marketdata_tb', index=False, connection=connection)
