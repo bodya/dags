@@ -14,7 +14,6 @@ req = requests.get(path)
 json_data = json.loads(req.text)
 securities_df = pd.DataFrame(json_data['securities']['data'],columns=json_data['securities']['columns'])
 securities_df.columns = securities_df.columns.str.lower()
-securities_df.insert(0, 'datestamp', str(datetime.today().date()), True)
-
+securities_df.insert(0, 'datestamp', str(datetime.today().strftime('%Y-%m-%d %H:%M:%S')), True)
 #записываем данные из pandas в clickhouse
 ph.to_clickhouse(securities_df, 'securities_tb', index=False, connection=connection)
