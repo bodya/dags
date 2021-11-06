@@ -14,7 +14,7 @@ default_args = {
     #"task_concurency": 1  # одновременно только 1 таск
 }
 
-piplines = {'moex_get_securities_db': {"schedule": "55,57,59 9 * * *"}, # "schedule": "55 3 * * 1-5"
+piplines = {'moex_get_securities_db': {"schedule": "5 11,16 * * 6"}, # "schedule": "55 3 * * 1-5"
             "moex_get_marketdata_db": {"schedule": "*/2 4-23 * * 1-5"}} # "schedule": "*/2 4-23 * * 1-5"
 
 def init_dag(dag, task_id):
