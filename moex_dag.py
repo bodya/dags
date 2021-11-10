@@ -6,7 +6,7 @@ default_args = {
     'owner': 'bodya',
     'depends_on_past': False,
     #'start_date': datetime(2021, 11, 2),
-    'start_date': days_ago(1),
+    'start_date': days_ago(0),
     'retries': 0,
     'catchup': False
 
