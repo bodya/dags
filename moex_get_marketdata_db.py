@@ -5,7 +5,7 @@ from datetime import datetime
 import pandahouse as ph
 
 connection = dict(database='db_moex',
-                  host='http://129.159.245.233:8123/',
+                  host='http://152.70.160.172:8123/',
                   user='default',
                   password='bodya')
 
