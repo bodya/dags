@@ -1,6 +1,6 @@
 drop table db_moex.test_marketdata_tb
 
-CREATE TABLE IF NOT EXISTS db_moex.test_marketdata_tb (
+CREATE TABLE IF NOT EXISTS db_moex.marketdata_tb (
 	datestamp DateTime,
 	secid String,
 	boardid String,
@@ -29,4 +29,90 @@ SETTINGS index_granularity = 8192
 select count()
 from db_moex.test
 
-OPTIMIZE TABLE test DEDUPLICATE;
+OPTIMIZE TABLE marketdata_tb DEDUPLICATE;
+--------------------------------------------------------
+CREATE TABLE IF NOT EXISTS db_moex.securities_tb (
+	datestamp DateTime,
+    secid String,
+    boardid String,
+    shortname String,
+    secname String,
+    prevsettleprice Float64,
+    status String,
+    decimals UInt8,
+    minstep Float64,
+    lasttradedate Date,
+    lastdeldate Date,
+    latname String,
+    assetcode String,
+    prevopenposition Float64,
+    prevprice Float64,
+    firsttradedate String
+)
+ENGINE = ReplacingMergeTree()
+ORDER BY (secid, prevsettleprice, prevopenposition, prevprice)
+SETTINGS index_granularity = 8192
+
+
+
+--------------------------------------------------------
+Старые схемы
+--------------------------------------------------------
+CREATE TABLE IF NOT EXISTS db_moex.marketdata_tb (
+	datestamp DateTime,
+	secid String,
+	boardid String,
+	bid String,
+	offer String,
+	spread Float64,
+	open Float64,
+	high Float64,
+	low Float64,
+	last Float64,
+	quantity UInt64,
+	lastchange Float64,
+	settleprice String,
+	settletoprevsettle String,
+	numtrades UInt64,
+	voltoday UInt64,
+	valtoday UInt64,
+	valtoday_usd UInt64,
+	updatetime String,
+	lastchangeprcnt Float64,
+	biddepth String,
+	biddeptht String,
+	numbids String,
+	offerdepth String,
+	offerdeptht String,
+	numoffers String,
+	time String,
+	settletoprevsettleprc String,
+	seqnum String,
+	systime DateTime,
+	oichange Int64
+)
+ENGINE = MergeTree()
+ORDER BY (datestamp, secid)
+SETTINGS index_granularity = 8192
+--------------------------------------------------------
+CREATE TABLE IF NOT EXISTS db_moex.securities_tb (
+	datestamp DateTime,
+    secid String,
+    boardid String,
+    shortname String,
+    secname String,
+    prevsettleprice Float64,
+    status String,
+    decimals UInt8,
+    minstep Float64,
+    lasttradedate Date,
+    lastdeldate Date,
+    latname String,
+    assetcode String,
+    prevopenposition Float64,
+    prevprice Float64,
+    firsttradedate String
+)
+ENGINE = MergeTree()
+ORDER BY (datestamp, secid)
+SETTINGS index_granularity = 8192
