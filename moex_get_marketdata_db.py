@@ -20,8 +20,8 @@ marketdata_df.columns = marketdata_df.columns.str.lower()
 marketdata_df.drop(['bid', 'offer', 'biddeptht', 'numbids', 'offerdepth', 'offerdeptht',
                     'numoffers', 'settletoprevsettleprc', 'biddepth', 'settleprice', 'settletoprevsettle'],
                    axis=1, inplace=True)
-#marketdata_df.insert(0, 'datestamp', str(datetime.now(tz_msk).strftime('%Y-%m-%d %H:%M:%S')), True)
-marketdata_df.insert(0, 'datestamp', str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')), True)
+marketdata_df.insert(0, 'datestamp', str(datetime.now(tz_msk).strftime('%Y-%m-%d %H:%M:%S')), True)
+#marketdata_df.insert(0, 'datestamp', str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')), True)
 marketdata_df.query('numtrades != 0', inplace=True)
 marketdata_df.fillna(0, inplace=True)
 
