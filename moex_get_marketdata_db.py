@@ -3,8 +3,8 @@ import requests
 import pandas as pd
 from datetime import datetime
 from clickhouse_driver import Client
-import pytz
-tz_msk = pytz.timezone('Europe/Moscow')
+#import pytz
+#tz_msk = pytz.timezone('Europe/Moscow')
 client = Client(host='152.70.160.172',
                port=9000,
                database='db_moex',
@@ -20,8 +20,8 @@ marketdata_df.columns = marketdata_df.columns.str.lower()
 marketdata_df.drop(['bid', 'offer', 'biddeptht', 'numbids', 'offerdepth', 'offerdeptht',
                     'numoffers', 'settletoprevsettleprc', 'biddepth', 'settleprice', 'settletoprevsettle'],
                    axis=1, inplace=True)
-marketdata_df.insert(0, 'datestamp', str(datetime.now(tz_msk).strftime('%Y-%m-%d %H:%M:%S')), True)
-#marketdata_df.insert(0, 'datestamp', str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')), True)
+#marketdata_df.insert(0, 'datestamp', str(datetime.now(tz_msk).strftime('%Y-%m-%d %H:%M:%S')), True)
+marketdata_df.insert(0, 'datestamp', str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')), True)
 marketdata_df.query('numtrades != 0', inplace=True)
 marketdata_df.fillna(0, inplace=True)
 
