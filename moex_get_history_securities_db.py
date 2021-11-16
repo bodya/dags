@@ -22,6 +22,7 @@ for index, row in secid_df.iterrows():
     history_securities_df = pd.DataFrame(json_data['history']['data'],columns=json_data['history']['columns'])
     history_securities_df.columns = history_securities_df.columns.str.lower()
     history_securities_df.drop(['boardid'], axis=1, inplace=True)
+    history_securities_df.query('openposition > 0', inplace=True)
     history_securities_df.fillna(0, inplace=True)
     history_securities_df.insert(0, 'datestamp', datetime.now(tz_msk).strftime('%Y-%m-%d %H:%M:%S'), True)
     # записываем данные из pandas в clickhouse
