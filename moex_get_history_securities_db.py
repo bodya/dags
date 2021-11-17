@@ -4,6 +4,7 @@ import pandas as pd
 from datetime import datetime
 from clickhouse_driver import Client
 import pytz
+import time
 
 tz_msk = pytz.timezone('Europe/Moscow')
 client = Client(host='152.70.160.172',
@@ -50,4 +51,5 @@ for index, row in secid_df.iterrows():
             temp_df = history_securities(json_data)
             all_history_securities_df = pd.concat([all_history_securities_df, temp_df], ignore_index=True)
     client.insert_dataframe('INSERT INTO history_securities_tb VALUES', all_history_securities_df)
+    time.sleep(1)
 client.execute('OPTIMIZE TABLE history_securities_tb DEDUPLICATE')
