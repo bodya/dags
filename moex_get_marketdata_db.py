@@ -25,7 +25,7 @@ marketdata_df.query('numtrades != 0', inplace=True)
 marketdata_df.fillna(0, inplace=True)
 
 #записываем данные из pandas в clickhouse
-client.insert_dataframe('INSERT INTO marketdata_tb VALUES', marketdata_df)
+client.insert_dataframe('INSERT INTO new_marketdata_tb VALUES', marketdata_df)
 #дропаем дубликаты
 
-client.execute('OPTIMIZE TABLE marketdata_tb DEDUPLICATE')
+client.execute('OPTIMIZE TABLE new_marketdata_tb DEDUPLICATE')
