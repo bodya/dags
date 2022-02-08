@@ -1,6 +1,2 @@
 settings.py
-pandahouse_moex_get_marketdata_db.py
-pandahouse_moex_get_securities_db.py
-python_dag.py
-work_with_db.py
 /venv/
