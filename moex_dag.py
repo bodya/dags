@@ -15,8 +15,9 @@ default_args = {
 }
 
 piplines = {"moex_get_securities_db": {"schedule": "30 16 * * 1-5"}, # "schedule": "55 3 * * 1-5"
-            "moex_get_history_securities_db": {"schedule": "30 16 * * 1-5"}, # "schedule": "55 3 * * 1-5"
-            "moex_get_marketdata_db": {"schedule": "*/2 4-21 * * 1-5"}} # "schedule": "*/2 4-23 * * 1-5"
+            "moex_get_history_securities_db": {"schedule": "31 16 * * 1-5"}, # "schedule": "55 3 * * 1-5"
+            "moex_get_marketdata_db": {"schedule": "32 16 * * 1-5"},
+            "moex_get_marketdata_db": {"schedule": "*/2 7-16 * * 1-5"}} # "schedule": "*/2 4-23 * * 1-5"
 
 def init_dag(dag, task_id):
     with dag:
